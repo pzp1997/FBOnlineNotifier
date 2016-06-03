@@ -1,0 +1,5 @@
+{
+    "username": "your email address that you use for Facebook goes here",
+    "password": "your Facebook password goes here",
+    "special_people": ["Dorian Gray", "John Yossarian", "Holly Golightly", "Holden Caulfield"]
+}
