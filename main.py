@@ -65,7 +65,7 @@ while True:
 
     if came_online:
         # If a person in `special_people` comes online, say their name.
-        for person in settings['special_people']:
+        for person in settings.get('special_people', []):
             if person in came_online:
                 os.system("say '{}'".format(person))
 
