@@ -13,11 +13,12 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 __author__ = 'Palmer Paul'
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 __email__ = 'pzpaul2002@yahoo.com'
 
 FACEBOOK_URL = 'https://www.facebook.com/'
 DELAY = 60
+LOG_FILE = 'log.txt'
 
 # HTML classes used for parsing page
 FRIEND_SIDEBAR_CLASS = '_55lp'
@@ -70,9 +71,17 @@ while True:
                 os.system("say '{}'".format(person))
 
         # Log everyone who has come online
-        print datetime.strftime(datetime.now(), '%a %b %d %I:%M %p')
-        print '\n'.join(sorted(came_online))
+        now = datetime.strftime(datetime.now(), '%a %b %d %I:%M %p')
+        came_online_str = '\n'.join(sorted(came_online))
+
+        print now
+        print came_online_str
         print
+
+        with open(LOG_FILE, 'a') as log:
+            log.write(now + '\n')
+            log.write(came_online_str.encode('utf-8') + '\n')
+            log.write('\n')
 
     # Wait `DELAY` seconds before reloading the page.
     time.sleep(DELAY)
